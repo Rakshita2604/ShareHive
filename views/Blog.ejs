@@ -1,15 +1,25 @@
+//  the code appears to generate a webpage with a header containing the title "Blog," a centered image within a container, and a footer.
+
+<!-- Include the "header" content with a dynamic title -->
 <%- include ("includes/header", {
    "title": "Blog"
 }) %>
 
+
+<!-- Container for the main content with margins -->
 <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+    <!-- Create a row for layout -->
     <div class="row">
+         <!-- Use a column to align content -->
         <div class="col-md-12">
+            <!-- Heading for the blog section -->
             <h2>Blog</h2>
         </div>
     </div>
 
+    <!-- Display an image with dynamic source URL -->
     <img src="<%= request.mainURL %>/public/img/blur-blog.png" style="width: 100%;" />
 </div>
 
+<!-- Include the "footer" content -->
 <%- include ("includes/footer") %>
