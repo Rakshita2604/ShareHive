@@ -1,15 +1,25 @@
+<!-- This code represents a view for displaying content related to items that have been shared with the current user. -->
+
 <%- include ("includes/header", {
    "title": "Shared with me"
 }) %>
+<!-- Including the header component with a custom title "Shared with me" -->
 
 <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+    <!-- Creating a container div with top and bottom margins -->
+
     <div class="row">
+        <!-- Creating a row within the container div -->
         <div class="col-md-12">
+            <!-- Creating a column that spans the full width on medium screens -->
             <h2>Shared With Me</h2>
+            <!-- Displaying a level 2 heading with the text "Shared With Me" -->
         </div>
     </div>
 
     <img src="<%= request.mainURL %>/public/img/blur-shared-with-me.png" style="width: 100%;" />
+    <!-- Displaying an image with a source URL and inline styling to set the width to 100% -->
 </div>
 
 <%- include ("includes/footer") %>
+<!-- Including the footer component -->
