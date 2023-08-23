@@ -1,20 +1,40 @@
+<!-- This code represents a view for displaying details about a file shared via a link.
+File Icon: The code displays a file icon using the Font Awesome icon library.
+           The fa-file-text-o class corresponds to an icon representing a text file.
+File Name: The code dynamically displays the name of the shared file using <%= link.file.name %>. This shows the name of the file that was shared.
+Download Button: The code creates a button with the "btn btn-success" classes for styling. 
+                  When clicked, the button triggers the downloadFile function and passes the associated file ID using the data-id attribute.
+Conditional Rendering: The code uses a conditional statement (<% if (typeof link !== "undefined") { %>) to check if the "link" object is defined.
+                  If it is defined, the jumbotron and its contents are displayed. This approach prevents rendering errors if the "link" object is not available. -->
+
+
 <%- include ("includes/header", {
    "title": "Shared via link"
 }) %>
+<!-- Including the header component with a custom title "Shared via link" -->
 
 <div class="container" style="margin-top: 50px;">
+    <!-- Creating a container div with top margin -->
 
     <%- include ("includes/ResponseAlert", {
         "request": request
     }) %>
+    <!-- Including the ResponseAlert component within the container div -->
 
     <% if (typeof link !== "undefined") { %>
+        <!-- Checking if the "link" object is defined -->
         <div class="row">
+            <!-- Creating a row within the container div -->
             <div class="col-md-12">
+                <!-- Creating a column that spans the full width on medium screens -->
                 <div class="jumbotron">
+                    <!-- Creating a jumbotron component using Bootstrap classes -->
 
                     <i style="font-size: 100px;" class="fa fa-file-text-o"></i>
+                    <!-- Displaying a file icon using Font Awesome -->
+
                     <h1><%= link.file.name %></h1>
+                    <!-- Displaying the name of the shared file -->
 
                     <br />
 
@@ -22,7 +42,7 @@
                         class="btn btn-success"
                         onclick="downloadFile(this);"
                         data-id="<%= link.file._id %>">Download</button>
-
+                    <!-- Creating a download button that triggers the "downloadFile" function with the associated file ID -->
                 </div>
             </div>
         </div>
@@ -30,3 +50,4 @@
 </div>
 
 <%- include ("includes/footer") %>
+<!-- Including the footer component -->
