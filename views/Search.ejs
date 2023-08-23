@@ -1,56 +1,73 @@
 <%- include ("includes/header", {
    "title": "Search"
 }) %>
+<!-- Including the header component with a custom title "Search" -->
 
 <div class="container" style="margin-top: 50px;">
+    <!-- Creating a container div with top margin -->
+
     <%- include ("includes/ResponseAlert", {
         "request": request
     }) %>
+    <!-- Including the ResponseAlert component within the container div -->
 
     <div class="row">
+        <!-- Creating a row within the container div -->
         <div class="col-md-12">
+            <!-- Creating a column that spans the full width on medium screens -->
             <% if (typeof file !== "undefined") { %>
+                <!-- Checking if the "file" object is defined -->
                 <div class="jumbotron">
+                    <!-- Creating a jumbotron component using Bootstrap classes -->
 
                     <p style="font-size: 100px;">
                         <% if (file.type == "folder") { %>
+                            <!-- Checking if the file type is "folder" -->
                             <i class="fa fa-folder-open-o"></i>
+                            <!-- Displaying a folder icon using Font Awesome -->
                         <% } else { %>
                             <i class="fa fa-file-text-o"></i>
+                            <!-- Displaying a file icon using Font Awesome -->
                         <% } %>
                     </p>
 
                     <h1>
                         <%= file.type == "folder" ? file.folderName : file.name %>
+                        <!-- Displaying the folder name if it is a folder, otherwise displaying the file name -->
                     </h1>
 
                     <br />
 
                     <p>
                         <%
+                            // Converting the "createdAt" timestamp to a human-readable date format
                             var createdAt = file.createdAt;
                             createdAt = parseFloat(createdAt);
                             createdAt = new Date(createdAt);
                             createdAt = createdAt.getDate() + " " + months[createdAt.getMonth()] + ", " + createdAt.getFullYear() + " " + createdAt.getHours() + ":" + createdAt.getMinutes() + ":" + createdAt.getSeconds();
                         %>
-
                         Created at: <%= createdAt %>
+                        <!-- Displaying the creation date of the file or folder -->
                     </p>
 
                     <p>
                         Size:
                         <%= file.type == "folder" ? formatBytes(getFolderSize(file.files)) : formatBytes(file.size) %>
+                        <!-- Displaying the size of the file or folder using the "formatBytes" function -->
                     </p>
 
                     <%
+                        // Generating the URL path for viewing the folder or file
                         var folderPath = "";
                         if (file.type == "folder") {
+                            // If it's a folder
                             if (file.isShared) {
                                 folderPath = request.mainURL + '/SharedWithMe/' + file._id;
                             } else {
                                 folderPath = request.mainURL + '/MyUploads/' + file._id
                             }
                         } else {
+                            // If it's a file
                             if (file.isShared) {
                                 folderPath = request.mainURL + '/SharedWithMe/';
                             } else {
@@ -63,7 +80,7 @@
                     <a href="<%= folderPath %>" class="btn btn-primary">
                         View
                     </a>
-
+                    <!-- Creating a button to view the folder or file by providing the calculated "folderPath" URL -->
                 </div>
             <% } %>
         </div>
@@ -71,3 +88,4 @@
 </div>
 
 <%- include ("includes/footer") %>
+<!-- Including the footer component -->
