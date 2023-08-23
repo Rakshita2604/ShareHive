@@ -1,3 +1,14 @@
+<!-- This code represents a view for displaying information about a searched folder or file.
+It uses Bootstrap's components and Font Awesome icons to create an informative display.
+Icon Display: Depending on whether the file type is a folder or not, the code displays either a folder icon or a file icon.
+File/Folder Name: The code dynamically displays either the folder name or the file name.
+Creation Date: The code converts the "createdAt" timestamp into a human-readable date format and displays it as the creation date of the file or folder.
+Size: The code uses a conditional statement to display the size of the folder (calculated using the "getFolderSize" function) or the size of the file.
+View Button: The code generates a URL path for viewing the folder or file. It includes conditions to handle shared items and parent folders.
+The "View" button links to this URL for users to access the item. -->
+
+
+
 <%- include ("includes/header", {
    "title": "Search"
 }) %>
