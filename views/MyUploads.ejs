@@ -1,36 +1,62 @@
+<!-- This code represents a webpage that displays uploaded files in a card-based layout.
+It provides options to view file details, download files, share files via link, and delete files.
+The JavaScript functions enable interactions such as selecting files for upload, confirming file uploads, and opening a modal to view file details and perform related actions. 
+The dynamic content, such as file names and IDs, is filled in using the EJS templating engine syntax.
+The code structure combines HTML, Bootstrap, JavaScript, and EJS templates to create a user-friendly interface for managing uploaded files. -->
+
 <%- include ("includes/header", {
    "title": "My Uploads"
 }) %>
+<!-- Including the header component with a custom title "My Uploads" -->
 
 <div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+<!-- Creating a container div with top and bottom margins -->
+
     <%- include ("includes/ResponseAlert", {
         "request": request
     }) %>
+     <!-- Including the ResponseAlert component within the container div -->
 
     <div class="row">
+    <!-- Creating a row within the container div -->
         <div class="col-md-4">
+        <!-- Creating a column that spans 4 grid units on medium screens -->
             <h1>My Uploads</h1>
+             <!-- Displaying a heading "My Uploads" -->
         </div>
 
         <div class="col-md-4">
+         <!-- Creating another column that spans 4 grid units on medium screens -->
             <a href="javascript:void(0);" class="btn btn-primary" onclick="selectFileForUpload();">Upload</a>
+             <!-- Displaying a button to trigger file selection for upload -->
         </div>
     </div>
 
     <div class="row">
+   <!-- Creating another row within the container div -->
+
         <%
+            // Looping through each uploaded file
             uploaded.forEach(function (singleFile) {
         %>
+            <!-- Embedding JavaScript code within EJS tags -->
             <div class="col-md-4" style="margin-top: 30px;">
+               <!-- Creating a column that spans 4 grid units on medium screens with top margin -->
 
                 <div class="card">
+                  <!-- Creating a card component using Bootstrap classes -->
                     <div class="card-body" style="font-size: 100px; text-align: center; height: 300px;">
+                     <!-- Styling the card body with a large font size and center-aligned text -->
                         <i class="fa fa-file-text-o"></i>
+                        <!-- Displaying an icon using Font Awesome -->
                     </div>
 
                     <div class="card-footer">
+                      <!-- Creating the card footer section -->
                         <div class="row">
+                           <!-- Creating a row within the card footer -->
                             <div class="col-md-12">
+                                 <!-- Creating a column that spans 12 grid units on medium screens -->
                                 <h3>
                                     <a href="javascript:void(0);"
                                         onclick="viewFile(this);"
@@ -41,6 +67,7 @@
 
                                         <%= (singleFile.name.length > 20) ? "..." : "" %>
                                     </a>
+                                       <!-- Displaying a link to view the file's details -->
                                 </h3>
                             </div>
                         </div>
@@ -49,17 +76,22 @@
                 </div>
             </div>
         <% }) %>
+            <!-- End of loop -->
     </div>
 
 </div>
 
 <form method="POST" action="<%= request.mainURL %>/UploadFile" enctype="multipart/form-data" id="form-upload-file">
+<!-- Creating a form to upload a file -->
     <input type="hidden" name="_id" value="" />
+    <!-- Hidden input field for the file's ID -->
     <input type="file" name="file" id="input-file-upload" style="display: none;" onchange="confirmUpload();" required />
+      <!-- Input field for selecting a file for upload -->
 </form>
 
 <!-- Modal -->
 <div class="modal fade" id="viewFileModal" tabindex="-1" role="dialog" aria-hidden="true">
+ <!-- Creating a modal dialog for viewing a file -->
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -105,13 +137,13 @@
 </div>
 
 <script>
-
+    // JavaScript functions for handling interactions and actions
     function selectFileForUpload() {
         document.getElementById("input-file-upload").click();
     }
 
     function confirmUpload() {
-
+       // Confirmation dialog before uploading a file
         swal({
             title: "Are you sure?",
             text: "Upload the selected file to the server ?",
@@ -127,6 +159,7 @@
     }
 
     function viewFile(self) {
+      // Function to view file details and actions
         var _id = self.getAttribute("data-id");
         var name = self.getAttribute("data-name");
         var type = self.getAttribute("data-type");
@@ -144,3 +177,4 @@
 </script>
 
 <%- include ("includes/footer") %>
+<!-- Including the footer component -->
