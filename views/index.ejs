@@ -1,15 +1,30 @@
+<!-- This code represents a webpage that showcases the features of a file transfer web application.
+It's designed using a combination of HTML, Bootstrap styling, and Vue.js for data binding. -->
+
 <%- include ("includes/header") %>
+<!-- Including the header component without any additional options -->
 
 <div id="homeApp" style="margin-bottom: 80px;">
+<!-- Creating a div with the ID "homeApp" and setting a margin at the bottom -->
+
     <div class="container" id="features">
+     <!-- Creating a container div with the ID "features" -->
+
         <div class="row">
+          <!-- Creating a row within the container div -->
             <div class="col-md-12 text-center">
+             <!-- Creating a column that spans the full width on medium screens and centers the content -->
                 <h1>File Transfer Web App</h1>
+                 <!-- Displaying a level 1 heading with the text "File Transfer Web App" -->
                 <p>Node JS and Mongo DB</p>
+                 <!-- Displaying a paragraph with the text "Node JS and Mongo DB" -->
 
                 <a v-bind:href="mainURL + '/MyUploads'">Get Started</a>
+                 <!-- Creating a link with the href attribute generated using data binding and the mainURL variable -->
             </div>
         </div>
+
+         <!-- ... (repeated for other sections) ... -->
 
         <div class="row">
             <div class="col-md-4">
@@ -150,13 +165,22 @@
         </div>
     </div>
 
+
     <div class="container-fluid" id="counterContainer">
+    <!-- Creating a full-width container div with the ID "counterContainer" -->
         <div class="container">
+        <!-- Creating a container div within the full-width container -->
             <div class="row">
+             <!-- Creating a row within the container div -->
                 <div class="col-md-4">
+                <!-- Creating a column that spans 4 columns on medium screens -->
                     <h4>6154</h4>
+                    <!-- Displaying a level 4 heading with the text "6154" -->
                     <p>Lines of Code</p>
+                     <!-- Displaying a paragraph with the text "Lines of Code" -->
                 </div>
+
+                <!-- ... (repeated for other counter items) ... -->
 
                 <div class="col-md-4">
                     <h4>11</h4>
@@ -171,14 +195,22 @@
         </div>
     </div>
 
+
     <div class="container" id="pricing">
+     <!-- Creating a container div with the ID "pricing" -->
         <div class="row">
+        <!-- Creating a row within the container div -->
             <div class="col-md-12 text-center">
+            <!-- Creating a column that spans the full width on medium screens and centers the content -->
                 <h2>Pricing</h2>
+                 <!-- Displaying a level 2 heading with the text "Pricing" -->
                 <br />
                 <p>Get the premium version in affordable and reasonable price.</p>
+                 <!-- Displaying a paragraph with the pricing information -->
             </div>
         </div>
+
+        <!-- ... (repeated for different pricing plans) ... -->
 
         <div class="row">
             <div class="offset-md-2 col-md-4">
@@ -229,11 +261,16 @@
         </div>
     </div>
 
+    <!-- Creating a full-width container div with the ID "cta" -->
     <div class="container-fluid" id="cta">
         <div class="container">
+        <!-- Creating a container div within the full-width container -->
             <div class="row">
+             <!-- Creating a row within the container div -->
                 <div class="col-md-12 text-center">
+                <!-- Creating a column that spans the full width on medium screens and centers the content -->
                     <h2>Buy Now</h2>
+                    <!-- Displaying a level 2 heading with the text "Buy Now" -->
                     <br />
                     <p style="font-size: 20px;">Get the premium version with all the features mentioned above. Customer support is also included in the premium version. <br /> All payments are handled securely.</p>
 
@@ -241,7 +278,7 @@
                         Contact us
                     </a>
 
-                    <p style="margin-top: 20px;">support@adnan-tech.com</p>
+                    <p style="margin-top: 20px;">support</p>
                     <p>+92-310-5461304</p>
                 </div>
             </div>
@@ -261,3 +298,4 @@
 </script>
 
 <%- include ("includes/footer") %>
+<!-- Including the footer component -->
